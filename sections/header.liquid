@@ -50,6 +50,19 @@
         </div>
     </header>
 
+<script>
+const announcement_bar = document.querySelector('.announcement-bar');
+const header_wrapper = document.querySelector('.header_wrapper');
+window.addEventListener('scroll', () => {
+  const top_position = announcement_bar.getBoundingClientRect().top;
+
+  if(window.scrollY > 0 && top_position < 0) {
+    header_wrapper.classList.add('header_wrapper--scrolled');
+  } else {
+    header_wrapper.classList.remove('header_wrapper--scrolled');
+  }
+});
+</script>
 {% stylesheet %}
   header {
     height: 5rem;
