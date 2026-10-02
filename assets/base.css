@@ -241,6 +241,12 @@ header.header_wrapper.header.header_wrapper--scrolled {
   text-decoration: none;
 }
 
+.header__buttons shopify-store[language="en"] {
+    display: none;
+}
+
+
+
 .header_menu a {
   position: relative;
   display: inline-block;

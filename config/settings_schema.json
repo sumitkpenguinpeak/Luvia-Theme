@@ -8,6 +8,40 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "t:general.logo",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:general.logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "t:general.logo"
+      }, 
+      {
+        "type": "image_picker",
+        "id": "sticky_logo",
+        "label": "t:general.sticky_logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "fav_icon",
+        "label": "t:general.fav_icon"
+      },
+      {
+        "type": "range", 
+        "id": "logo_width",
+        "label": "t:general.logo_width",
+        "min": 100,
+        "max": 500,
+        "step": 10,
+        "unit": "px",
+        "default": 100,
+      }
+    ]
+  },
+  {
     "name": "t:general.typography",
     "settings": [
       {

@@ -9,14 +9,23 @@
                     </svg>
                 </div>
                 <div class="header_navigation">
-                    <nav class="header_menu">
+                    <nav class="header_menu" aria-label="{{ 'sections.header.menu' | t }}">
+                      {% if section.settings.menu != blank %}
                         <ul class="flex flex-wrap">
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#shop">Shop</a></li>
-                            <li><a href="#collections">Collections</a></li>
-                            <li><a href="#journal">Pages</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                          {% for link in section.settings.menu.links %}
+                            <li>
+                              <a
+                                href="{{ link.url }}"
+                                {% if link.current %}
+                                  aria-current="page"
+                                {% endif %}
+                              >
+                                {{ link.title | escape }}
+                              </a>
+                            </li>
+                          {% endfor %}
                         </ul>
+                      {% endif %}
                     </nav>
                 </div>
                 <div class="header_logo">
@@ -33,8 +42,19 @@
 
                         {% if shop.customer_accounts_enabled %}
                           <shopify-account menu="{{ section.settings.customer_account_menu }}">
-                            {{ 'icon-account.svg' | inline_asset_content }}
-                          </shopify-account>
+                              {% if customer %}
+                                <div class="btfy-account-button__fallback no-empty" aria-label="{{ 'customer.account_fallback' | t }}"></div>
+                              {% else %}
+                                <span
+                                  slot="signed-out-avatar"
+                                  aria-hidden="true"
+                                  aria-label="{{ 'customer.log_in' | t }}"
+                                  class="flex items-center justify-center"
+                                >
+                                  {%- render 'icon-account', size: 'large' -%}
+                                </span>
+                              {% endif %}
+                            </shopify-account>
                         {% endif %}
                         <a class="header_cart-button" href="#bag">
                             <svg viewBox="0 0 20 20" fill="none" class="icon icon-shopping-bag icon--large" xmlns="http://www.w3.org/2000/svg">
